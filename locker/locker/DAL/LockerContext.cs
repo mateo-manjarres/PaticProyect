@@ -20,5 +20,7 @@ namespace locker.DAL
         }
 
         public System.Data.Entity.DbSet<locker.Models.Login> Logins { get; set; }
+
+        public System.Data.Entity.DbSet<locker.Models.Lectura> Lecturas { get; set; }
     }
 }

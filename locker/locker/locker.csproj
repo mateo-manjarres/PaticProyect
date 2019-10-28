@@ -130,6 +130,7 @@
     <Compile Include="Controllers\ContactoController.cs" />
     <Compile Include="Controllers\GestionDeLibroesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LecturaController.cs" />
     <Compile Include="Controllers\LoginsController.cs" />
     <Compile Include="Controllers\RegistrousuariosController.cs" />
     <Compile Include="DAL\LockerContext.cs" />
@@ -148,6 +149,7 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Contacto.cs" />
     <Compile Include="Models\GestionDeLibro.cs" />
+    <Compile Include="Models\Lectura.cs" />
     <Compile Include="Models\Login.cs" />
     <Compile Include="Models\Registrousuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -304,6 +306,7 @@
     <Content Include="Views\GestionDeLibroes\Details.cshtml" />
     <Content Include="Views\GestionDeLibroes\Edit.cshtml" />
     <Content Include="Views\GestionDeLibroes\Index.cshtml" />
+    <Content Include="Views\Lectura\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201910210453404_InitialCreate.resx">
