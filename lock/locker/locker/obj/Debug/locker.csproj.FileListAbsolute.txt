@@ -187,3 +187,7 @@ C:\Users\Usuario\Desktop\locker\locker\bin\Microsoft.Owin.Security.xml
 C:\Users\Usuario\Desktop\locker\locker\bin\Microsoft.Owin.Security.Cookies.xml
 C:\Users\Usuario\Desktop\locker\locker\bin\Microsoft.Owin.Security.OAuth.xml
 C:\Users\Usuario\Desktop\locker\locker\obj\Debug\locker.csprojAssemblyReference.cache
+C:\Users\Usuario\Desktop\Git\PaticProyect\lock\locker\locker\obj\Debug\locker.csprojAssemblyReference.cache
+C:\Users\Usuario\Desktop\Git\PaticProyect\lock\locker\locker\obj\Debug\locker.csproj.CoreCompileInputs.cache
+C:\Users\Usuario\Desktop\Git\PaticProyect\lock\locker\locker\obj\Debug\locker.dll
+C:\Users\Usuario\Desktop\Git\PaticProyect\lock\locker\locker\obj\Debug\locker.pdb
