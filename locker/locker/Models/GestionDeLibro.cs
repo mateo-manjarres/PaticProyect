@@ -11,7 +11,10 @@ namespace locker.Models
     {
         //Cada 100 paginas un arbol
         public int pag, arbol = 0;
-        public int GestionDeLibroID { get; set; }
+        public int id;
+        public int IDusuario { get; set; }
+        [Key]
+        public int ID { get; set; }
         [Display(Name = "Nombre del libro")]
         public string NombreLibro { get; set; }
         public string Estado { get; set; }
@@ -35,8 +38,8 @@ namespace locker.Models
         {
             get
             {
-                arbol = 0;
-                for (int i = 0;  i<pag; i=i+100)
+                arbol = -1;
+                for (int i = 0;  i<pag; i=i+99)
                 {
                     arbol +=1;
                 }

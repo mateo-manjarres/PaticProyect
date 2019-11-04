@@ -22,7 +22,7 @@ namespace locker.Controllers
         }
 
         // GET: Logins/Details/5
-        public ActionResult Details(string id)
+        public ActionResult Details(int? id)
         {
             if (id == null)
             {
@@ -47,20 +47,26 @@ namespace locker.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Email,Password")] Login login)
+        public ActionResult Create(locker.Models.Register userModel)
         {
-            if (ModelState.IsValid)
+           
+            var login = db.Registrer.Where(x => x.Email == userModel.Email && x.Password == userModel.Password).FirstOrDefault();
+            if (login == null)
             {
-                db.Logins.Add(login);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                return View("Create");
+            }
+            else
+            {
+                Session["ID"] = login.ID;
+                Session["userName"] = login.Email;
+                return RedirectToAction("Index", "GestionDeLibroes");
             }
 
-            return View(login);
+            
         }
 
         // GET: Logins/Edit/5
-        public ActionResult Edit(string id)
+        public ActionResult Edit(int? id)
         {
             if (id == null)
             {
@@ -79,7 +85,7 @@ namespace locker.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Email,Password")] Login login)
+        public ActionResult Edit([Bind(Include = "ID,Email,Password")] Login login)
         {
             if (ModelState.IsValid)
             {
@@ -91,7 +97,7 @@ namespace locker.Controllers
         }
 
         // GET: Logins/Delete/5
-        public ActionResult Delete(string id)
+        public ActionResult Delete(int? id)
         {
             if (id == null)
             {
@@ -108,12 +114,17 @@ namespace locker.Controllers
         // POST: Logins/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(string id)
+        public ActionResult DeleteConfirmed(int id)
         {
             Login login = db.Logins.Find(id);
             db.Logins.Remove(login);
             db.SaveChanges();
             return RedirectToAction("Index");
+        }
+        public ActionResult LogOut()
+        {
+            Session.Abandon();
+            return RedirectToAction("Index", "Home");
         }
 
         protected override void Dispose(bool disposing)

@@ -11,6 +11,7 @@
 </p>
 <table class="table">
     <tr>
+       
         <th>
             @Html.DisplayNameFor(model => model.NombreLibro)
         </th>
@@ -32,14 +33,13 @@
         <th>
             @Html.DisplayNameFor(model => model.PaginaActual)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Arboles)
-        </th>
+       
         <th></th>
     </tr>
 
 @foreach (var item in Model) {
     <tr>
+       
         <td>
             @Html.DisplayFor(modelItem => item.NombreLibro)
         </td>
@@ -61,13 +61,11 @@
         <td>
             @Html.DisplayFor(modelItem => item.PaginaActual)
         </td>
+      
         <td>
-            @Html.DisplayFor(modelItem => item.Arboles)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Editar", new { id=item.GestionDeLibroID }) |
-            @Html.ActionLink("Bosque", "Details", new { id=item.GestionDeLibroID }) |
-            @Html.ActionLink("Borrar", "Delete", new { id=item.GestionDeLibroID })
+            @Html.ActionLink("Editar", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Arbol", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Borrar", "Delete", new { id=item.ID })
         </td>
     </tr>
 }

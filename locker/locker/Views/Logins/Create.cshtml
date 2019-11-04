@@ -4,11 +4,9 @@
     ViewBag.Title = "Create";
 }
 
-@Styles.Render("~/Content/css")
-@Scripts.Render("~/bundles/jqueryval")
 
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("Create", "logins"))
 {
     @Html.AntiForgeryToken()
 
@@ -44,4 +42,6 @@
     @Html.ActionLink("Back to List", "Index")
 </div>
 
+
+@Scripts.Render("~/bundles/jqueryval")
 

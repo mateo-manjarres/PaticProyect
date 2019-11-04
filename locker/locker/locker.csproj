@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
   <Import Project="..\packages\EntityFramework.6.4.0-preview1-19506-01\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.0-preview1-19506-01\build\EntityFramework.props')" />
   <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
@@ -26,6 +27,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <TypeScriptToolsVersion>3.1</TypeScriptToolsVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -52,7 +54,31 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.4.0-preview1-19506-01\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.2\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.2\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.2.2.2\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Owin, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.3.0.1\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.3.0.1\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.3.0.1\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.3.0.1\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -131,34 +157,47 @@
     <Compile Include="Controllers\GestionDeLibroesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginsController.cs" />
-    <Compile Include="Controllers\RegistrousuariosController.cs" />
+    <Compile Include="Controllers\RegistersController.cs" />
     <Compile Include="DAL\LockerContext.cs" />
     <Compile Include="DAL\LockerInitializer.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201910210453404_InitialCreate.cs" />
-    <Compile Include="Migrations\201910210453404_InitialCreate.designer.cs">
-      <DependentUpon>201910210453404_InitialCreate.cs</DependentUpon>
+    <Compile Include="Migrations\201910280721233_InitialCreate.cs" />
+    <Compile Include="Migrations\201910280721233_InitialCreate.designer.cs">
+      <DependentUpon>201910280721233_InitialCreate.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201910211218511_ContactoChange.cs" />
-    <Compile Include="Migrations\201910211218511_ContactoChange.designer.cs">
-      <DependentUpon>201910211218511_ContactoChange.cs</DependentUpon>
+    <Compile Include="Migrations\201910311747499_GestonDeLibroesChange.cs" />
+    <Compile Include="Migrations\201910311747499_GestonDeLibroesChange.designer.cs">
+      <DependentUpon>201910311747499_GestonDeLibroesChange.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Contacto.cs" />
     <Compile Include="Models\GestionDeLibro.cs" />
     <Compile Include="Models\Login.cs" />
-    <Compile Include="Models\Registrousuario.cs" />
+    <Compile Include="Models\Register.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\bootstrap-grid.css" />
+    <Content Include="Content\bootstrap-grid.min.css" />
+    <Content Include="Content\bootstrap-reboot.css" />
+    <Content Include="Content\bootstrap-reboot.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\css\bootstrap.css" />
+    <Content Include="Content\css\landing-page.css" />
+    <Content Include="Content\css\pe-icon-7-stroke.css" />
     <Content Include="Content\css\style.css" />
+    <Content Include="Content\fonts\fontawesome-webfont.svg" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\fonts\Pe-icon-7-stroke.svg" />
     <Content Include="Content\img\about-bg.jpg" />
     <Content Include="Content\img\about-mission.jpg" />
     <Content Include="Content\img\about-plan.jpg" />
     <Content Include="Content\img\about-vision.jpg" />
     <Content Include="Content\img\apple-touch-icon.png" />
+    <Content Include="Content\img\blue.jpg" />
     <Content Include="Content\img\call-to-action-bg.jpg" />
     <Content Include="Content\img\clients\client-1.png" />
     <Content Include="Content\img\clients\client-2.png" />
@@ -168,14 +207,27 @@
     <Content Include="Content\img\clients\client-6.png" />
     <Content Include="Content\img\clients\client-7.png" />
     <Content Include="Content\img\clients\client-8.png" />
+    <Content Include="Content\img\faces\face-1.jpg" />
+    <Content Include="Content\img\faces\face-2.jpg" />
+    <Content Include="Content\img\faces\face-3.jpg" />
+    <Content Include="Content\img\faces\face-4.jpg" />
     <Content Include="Content\img\facts-bg.jpg" />
     <Content Include="Content\img\facts-img.png" />
+    <Content Include="Content\img\favicon.ico" />
     <Content Include="Content\img\favicon.png" />
     <Content Include="Content\img\intro-carousel\1.jpg" />
     <Content Include="Content\img\intro-carousel\2.jpg" />
     <Content Include="Content\img\intro-carousel\3.jpg" />
     <Content Include="Content\img\intro-carousel\4.jpg" />
     <Content Include="Content\img\intro-carousel\5.jpg" />
+    <Content Include="Content\img\logos\adobe.png" />
+    <Content Include="Content\img\logos\airbnb.png" />
+    <Content Include="Content\img\logos\ebay.png" />
+    <Content Include="Content\img\logos\evernote.png" />
+    <Content Include="Content\img\logos\zappos.png" />
+    <Content Include="Content\img\logos\zendesk.png" />
+    <Content Include="Content\img\new_logo.png" />
+    <Content Include="Content\img\phone_app.jpg" />
     <Content Include="Content\img\portfolio\app1.jpg" />
     <Content Include="Content\img\portfolio\app2.jpg" />
     <Content Include="Content\img\portfolio\app3.jpg" />
@@ -188,16 +240,40 @@
     <Content Include="Content\img\preloader.gif" />
     <Content Include="Content\img\quote-sign-left.png" />
     <Content Include="Content\img\quote-sign-right.png" />
+    <Content Include="Content\img\showcases\showcase-1\bg.jpg" />
+    <Content Include="Content\img\showcases\showcase-1\bg2.jpg" />
+    <Content Include="Content\img\showcases\showcase-1\examples\home_1.jpg" />
+    <Content Include="Content\img\showcases\showcase-1\examples\home_2.jpg" />
+    <Content Include="Content\img\showcases\showcase-1\examples\home_3.jpg" />
+    <Content Include="Content\img\showcases\showcase-1\iphone.png" />
+    <Content Include="Content\img\showcases\showcase-1\iphones.png" />
+    <Content Include="Content\img\showcases\showcase-2\bg2.jpg" />
+    <Content Include="Content\img\showcases\showcase-2\examples\home_4.jpg" />
+    <Content Include="Content\img\showcases\showcase-2\examples\home_6.jpg" />
+    <Content Include="Content\img\showcases\showcase-2\mac1.png" />
+    <Content Include="Content\img\showcases\showcase-2\mac2.png" />
     <Content Include="Content\img\team-1.jpg" />
     <Content Include="Content\img\team-2.jpg" />
     <Content Include="Content\img\team-3.jpg" />
     <Content Include="Content\img\team-4.jpg" />
+    <Content Include="Content\img\template\bg3.jpg" />
+    <Content Include="Content\img\template\examples\home_11.jpg" />
+    <Content Include="Content\img\template\examples\home_22.jpg" />
+    <Content Include="Content\img\template\examples\home_33.jpg" />
+    <Content Include="Content\img\template\examples\home_44.jpg" />
+    <Content Include="Content\img\template\iphone3.png" />
+    <Content Include="Content\img\template\mac.png" />
     <Content Include="Content\img\testimonial-1.jpg" />
     <Content Include="Content\img\testimonial-2.jpg" />
     <Content Include="Content\img\testimonial-3.jpg" />
     <Content Include="Content\img\testimonial-4.jpg" />
     <Content Include="Content\img\testimonial-5.jpg" />
+    <Content Include="Content\img\web_app.jpg" />
     <Content Include="Content\index.html" />
+    <Content Include="Content\js\awesome-landing-page.js" />
+    <Content Include="Content\js\bootstrap.js" />
+    <Content Include="Content\js\jquery-1.10.2.js" />
+    <Content Include="Content\js\jquery-ui-1.10.4.custom.min.js" />
     <Content Include="Content\js\main.js" />
     <Content Include="Content\lib\animate\animate.css" />
     <Content Include="Content\lib\animate\animate.min.css" />
@@ -247,10 +323,61 @@
     <Content Include="Content\lib\wow\wow.js" />
     <Content Include="Content\lib\wow\wow.min.js" />
     <Content Include="Content\Readme.txt" />
+    <Content Include="Content\Site.css" />
     <Content Include="favicon.ico" />
-    <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="img\tree.jpg" />
+    <Content Include="Scripts\bootstrap.bundle.js" />
+    <Content Include="Scripts\bootstrap.bundle.min.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\esm\popper-utils.js" />
+    <Content Include="Scripts\esm\popper-utils.min.js" />
+    <Content Include="Scripts\esm\popper.js" />
+    <Content Include="Scripts\esm\popper.min.js" />
+    <Content Include="Scripts\esm\popper.min.js.map" />
+    <Content Include="Scripts\esm\popper.js.map" />
+    <Content Include="Scripts\esm\popper-utils.min.js.map" />
+    <Content Include="Scripts\esm\popper-utils.js.map" />
+    <Content Include="Scripts\bootstrap.min.js.map" />
+    <Content Include="Scripts\bootstrap.js.map" />
+    <Content Include="Scripts\bootstrap.bundle.min.js.map" />
+    <Content Include="Scripts\bootstrap.bundle.js.map" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-reboot.min.css.map" />
+    <Content Include="Content\bootstrap-reboot.css.map" />
+    <Content Include="Content\bootstrap-grid.min.css.map" />
+    <Content Include="Content\bootstrap-grid.css.map" />
+    <Content Include="Content\fonts\fontawesome-webfont.eot" />
+    <Content Include="Content\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Content\fonts\fontawesome-webfont.woff" />
+    <Content Include="Content\fonts\FontAwesome.otf" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Content\fonts\Pe-icon-7-stroke.eot" />
+    <Content Include="Content\fonts\Pe-icon-7-stroke.ttf" />
+    <Content Include="Content\fonts\Pe-icon-7-stroke.woff" />
+    <None Include="Scripts\jquery-3.3.1.intellisense.js" />
+    <Content Include="Scripts\jquery-3.3.1.js" />
+    <Content Include="Scripts\jquery-3.3.1.min.js" />
+    <Content Include="Scripts\jquery-3.3.1.slim.js" />
+    <Content Include="Scripts\jquery-3.3.1.slim.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\popper-utils.js" />
+    <Content Include="Scripts\popper-utils.min.js" />
+    <Content Include="Scripts\popper.js" />
+    <Content Include="Scripts\popper.min.js" />
+    <Content Include="Scripts\umd\popper-utils.js" />
+    <Content Include="Scripts\umd\popper-utils.min.js" />
+    <Content Include="Scripts\umd\popper.js" />
+    <Content Include="Scripts\umd\popper.min.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -270,25 +397,30 @@
     <Content Include="Views\Contacto\Details.cshtml" />
     <Content Include="Views\Contacto\Edit.cshtml" />
     <Content Include="Views\Contacto\Index.cshtml" />
-    <Content Include="Views\Registrousuarios\Create.cshtml" />
-    <Content Include="Views\Registrousuarios\Delete.cshtml" />
-    <Content Include="Views\Registrousuarios\Details.cshtml" />
-    <Content Include="Views\Registrousuarios\Edit.cshtml" />
-    <Content Include="Views\Registrousuarios\Index.cshtml" />
     <Content Include="Views\Logins\Create.cshtml" />
     <Content Include="Views\Logins\Delete.cshtml" />
     <Content Include="Views\Logins\Details.cshtml" />
     <Content Include="Views\Logins\Edit.cshtml" />
     <Content Include="Views\Logins\Index.cshtml" />
+    <Content Include="Views\GestionDeLibroes\Create.cshtml" />
+    <Content Include="Views\GestionDeLibroes\Delete.cshtml" />
+    <Content Include="Views\GestionDeLibroes\Details.cshtml" />
+    <Content Include="Views\GestionDeLibroes\Edit.cshtml" />
+    <Content Include="Views\GestionDeLibroes\Index.cshtml" />
+    <Content Include="Scripts\umd\popper.min.js.map" />
+    <Content Include="Scripts\umd\popper.js.map" />
+    <Content Include="Scripts\umd\popper-utils.min.js.map" />
+    <Content Include="Scripts\umd\popper-utils.js.map" />
+    <Content Include="Scripts\README.md" />
+    <Content Include="Scripts\popper.min.js.map" />
+    <Content Include="Scripts\popper.js.map" />
+    <Content Include="Scripts\popper-utils.min.js.map" />
+    <Content Include="Scripts\popper-utils.js.map" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
-    <Content Include="fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Content\lib\font-awesome\fonts\fontawesome-webfont.eot" />
     <Content Include="Content\lib\font-awesome\fonts\fontawesome-webfont.ttf" />
     <Content Include="Content\lib\font-awesome\fonts\fontawesome-webfont.woff" />
@@ -299,25 +431,34 @@
     <Content Include="Content\lib\ionicons\fonts\ionicons.woff" />
     <Content Include="Content\lib\owlcarousel\LICENSE" />
     <None Include="packages.config" />
-    <Content Include="Views\GestionDeLibroes\Create.cshtml" />
-    <Content Include="Views\GestionDeLibroes\Delete.cshtml" />
-    <Content Include="Views\GestionDeLibroes\Details.cshtml" />
-    <Content Include="Views\GestionDeLibroes\Edit.cshtml" />
-    <Content Include="Views\GestionDeLibroes\Index.cshtml" />
+    <Content Include="Views\Registers\Create.cshtml" />
+    <Content Include="Views\Registers\Delete.cshtml" />
+    <Content Include="Views\Registers\Details.cshtml" />
+    <Content Include="Views\Registers\Edit.cshtml" />
+    <Content Include="Views\Registers\Index.cshtml" />
+    <Content Include="Scripts\jquery-3.3.1.min.map" />
+    <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201910210453404_InitialCreate.resx">
-      <DependentUpon>201910210453404_InitialCreate.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201910280721233_InitialCreate.resx">
+      <DependentUpon>201910280721233_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201910211218511_ContactoChange.resx">
-      <DependentUpon>201910211218511_ContactoChange.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201910311747499_GestonDeLibroesChange.resx">
+      <DependentUpon>201910311747499_GestonDeLibroesChange.cs</DependentUpon>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="Scripts\index.d.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
   <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
   <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">

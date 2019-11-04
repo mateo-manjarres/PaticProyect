@@ -4,6 +4,7 @@
     ViewBag.Title = "Details";
 }
 
+<h2>Details</h2>
 
 <div>
     <h4>Gestion De Libro</h4>
@@ -17,12 +18,12 @@
     @{
         int arbol = Model.Arboles;
     }
-    @for (int i = 0; i < arbol/10; i++)
+    @for (int i = 0; i < arbol; i++)
     {
-        <img src="~/img/tree.jpg"/>
+        <img src="~/img/tree.jpg" height="20" width="20"/>
     }
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.GestionDeLibroID }) |
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
     @Html.ActionLink("Back to List", "Index")
 </p>

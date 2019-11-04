@@ -16,9 +16,18 @@ namespace locker.Controllers
         private LockerContext db = new LockerContext();
 
         // GET: GestionDeLibroes
-        public ActionResult Index()
+        public ActionResult Index(locker.Models.Register userModel)
         {
-            return View(db.GestionDeLibros.ToList());
+            int id = Int32.Parse(Session["ID"].ToString());
+            var login = db.GestionDeLibros.Where(x => x.IDusuario == userModel.ID).FirstOrDefault();
+            if (login == null)
+            {
+                return View(db.GestionDeLibros.Where(x => x.IDusuario == id).ToList());
+            }
+            else
+            {
+                return View(db.GestionDeLibros.ToList().Where(x => x.IDusuario == id).FirstOrDefault());
+            }
         }
 
         // GET: GestionDeLibroes/Details/5
@@ -47,10 +56,11 @@ namespace locker.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "GestionDeLibroID,NombreLibro,Estado,Autor,Introduccion,Genero,Editorial,PaginaActual,Arboles")] GestionDeLibro gestionDeLibro)
+        public ActionResult Create([Bind(Include = "ID,IDusuario,NombreLibro,Estado,Autor,Introduccion,Genero,Editorial,PaginaActual,Arboles")] GestionDeLibro gestionDeLibro)
         {
             if (ModelState.IsValid)
             {
+                gestionDeLibro.IDusuario = Int32.Parse(Session["ID"].ToString());
                 db.GestionDeLibros.Add(gestionDeLibro);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -79,7 +89,7 @@ namespace locker.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "GestionDeLibroID,NombreLibro,Estado,Autor,Introduccion,Genero,Editorial,PaginaActual,Arboles")] GestionDeLibro gestionDeLibro)
+        public ActionResult Edit([Bind(Include = "ID,IDusuario,NombreLibro,Estado,Autor,Introduccion,Genero,Editorial,PaginaActual,Arboles")] GestionDeLibro gestionDeLibro)
         {
             if (ModelState.IsValid)
             {

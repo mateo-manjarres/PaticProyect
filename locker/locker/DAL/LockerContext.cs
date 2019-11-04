@@ -12,7 +12,7 @@ namespace locker.DAL
 
         public DbSet<Contacto> Contactos { get; set; }
         public DbSet<GestionDeLibro> GestionDeLibros { get; set; }
-        public DbSet<Registrousuario> Registrousuarios { get; set; }
+        public DbSet<Register> Registrer { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {       

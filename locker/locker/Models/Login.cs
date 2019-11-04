@@ -8,15 +8,15 @@ namespace locker.Models
 {
     public class Login
     {
-
+        public int ID { get; set; }
+        [Required]
         [EmailAddress]
-        [Key]
-        [Display(Name = "Email")]
         public string Email { get; set; }
 
         [Required]
         [DataType(DataType.Password)]
-        [Display(Name = "Contraseña")]
         public string Password { get; set; }
+
+        public string LoginError { get; set; }
     }
 }
